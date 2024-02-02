@@ -1,0 +1,35 @@
+:root {
+	--primary-font-color: #000;
+	--secondary-font-color: #fff;
+	--primary-bg-color: #dc143c;
+	--secondary-bg-color: #ff10f0;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: linear-gradient(
+		90deg,
+		var(--primary-bg-color),
+		var(--secondary-bg-color)
+	);
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	color: var(--primary-font-color);
+}
+
+main {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn {
+	cursor: pointer;
+}
