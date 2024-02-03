@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
-    <title>Pig</title>
+    <title>pig dice game</title>
 </head>
 
 <body>
     <main>
+        <button class="instructions-btn">Instructions</button>
         <section class="player player--1">
             <h2 class="name" id="name--1">Player 1</h2>
             <p class="score" id="score--1">0</p>
@@ -26,9 +27,10 @@
                 <p class="current-score" id="current--2">0</p>
             </div>
         </section>
+        <img src="assets/dice-5.png" alt="dice" class="dice">
         <button class="btn btn--new">🔄 New Game</button>
         <button class="btn btn--roll">🎲 Roll Dice</button>
-        <button class="btn btn--hold">👍 Store Score</button>
+        <button class="btn btn--store">👍 Store Score</button>
     </main>
     <script src="script.js"></script>
 </body>
