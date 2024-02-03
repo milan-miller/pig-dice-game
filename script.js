@@ -9,8 +9,16 @@ const rollDiceBtn = document.querySelector('.btn--roll');
 const storeScoreBtn = document.querySelector('.btn--store');
 const currentScoreP1 = document.getElementById('current--1');
 const currentScoreP2 = document.getElementById('current--2');
+const p1Active = document.querySelector('.p1--active');
+const p2Active = document.querySelector('.p2--active');
+
+const scores = {
+	p1: 0,
+	p2: 0,
+};
 
 let currentScore = 0;
+let activePlayer = 1;
 
 // Initial state
 score1Paragraph.textContent = 0;
@@ -25,9 +33,20 @@ rollDiceBtn.addEventListener('click', () => {
 
 	if (randomNmb !== 1) {
 		currentScore += randomNmb;
-		currentScoreP1.textContent = currentScore;
+		document.getElementById(`current--${activePlayer}`).textContent =
+			currentScore;
 	} else {
 		currentScore = 0;
-		currentScoreP1.textContent = currentScore;
+		document.getElementById(`current--${activePlayer}`).textContent =
+			currentScore;
+		activePlayer = activePlayer === 1 ? 2 : 1;
+
+		if (activePlayer === 2) {
+			p1Active.classList.toggle('hidden');
+			p2Active.classList.toggle('hidden');
+		} else {
+			p2Active.classList.toggle('hidden');
+			p1Active.classList.toggle('hidden');
+		}
 	}
 });
