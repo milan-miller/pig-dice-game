@@ -75,7 +75,7 @@ storeScoreBtn.addEventListener('click', () => {
 
 		diceImage.classList.add('hidden');
 
-		if (playerScores[`p${activePlayer}`] >= 10) {
+		if (playerScores[`p${activePlayer}`] >= 100) {
 			playing = false;
 			document
 				.getElementById(`p${activePlayer}--crown`)
