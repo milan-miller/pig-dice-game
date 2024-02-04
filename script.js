@@ -75,7 +75,7 @@ storeScoreBtn.addEventListener('click', () => {
 
 		diceImage.classList.add('hidden');
 
-		if (playerScores[`p${activePlayer}`] >= 100) {
+		if (playerScores[`p${activePlayer}`] >= 10) {
 			playing = false;
 			document
 				.getElementById(`p${activePlayer}--crown`)
@@ -104,15 +104,23 @@ newGameBtn.addEventListener('click', () => {
 	diceImage.classList.add('hidden');
 	activePlayer = activePlayer === 1 ? 2 : 1;
 
+	/**
+	 * Make it so that the losing player gets to start after clicking new game,
+	 * and other player if new game is clicked before a victory.
+	 **/
+
+	if (activePlayer === 1) {
+		document.querySelector(`.p2--active`).classList.add('hidden');
+		document.querySelector(`.p1--active`).classList.remove('hidden');
+	} else {
+		document.querySelector(`.p1--active`).classList.add('hidden');
+		document.querySelector(`.p2--active`).classList.remove('hidden');
+	}
+
 	p1TotalScore.textContent = 0;
 	p2TotalScore.textContent = 0;
 	currentScoreP1.textContent = 0;
 	currentScoreP2.textContent = 0;
-
-	// Let the losing player have the first turn
-	document
-		.querySelector(`.p${activePlayer}--active`)
-		.classList.remove('hidden');
 });
 
 instructionsBtn.addEventListener('click', () => {
