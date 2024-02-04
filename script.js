@@ -17,6 +17,7 @@ const playerScores = {
 
 let currentScore = 0;
 let activePlayer = 1;
+let playing = true;
 
 const switchActivePlayer = () => {
 	currentScore = 0;
@@ -38,31 +39,41 @@ const switchActivePlayer = () => {
 diceImage.classList.add('hidden');
 
 rollDiceBtn.addEventListener('click', () => {
-	const randomNmb = Math.trunc(Math.random() * 6) + 1;
+	if (playing) {
+		const randomNmb = Math.trunc(Math.random() * 6) + 1;
 
-	diceImage.classList.remove('hidden');
-	diceImage.src = `assets/dice-${randomNmb}.png`;
+		diceImage.classList.remove('hidden');
+		diceImage.src = `assets/dice-${randomNmb}.png`;
 
-	if (randomNmb !== 1) {
-		currentScore += randomNmb;
-		document.getElementById(`current--${activePlayer}`).textContent =
-			currentScore;
-	} else {
-		switchActivePlayer();
+		if (randomNmb !== 1) {
+			currentScore += randomNmb;
+			document.getElementById(`current--${activePlayer}`).textContent =
+				currentScore;
+		} else {
+			switchActivePlayer();
+		}
 	}
 });
 
 storeScoreBtn.addEventListener('click', () => {
-	playerScores[`p${activePlayer}`] += currentScore;
+	if (playing) {
+		playerScores[`p${activePlayer}`] += currentScore;
 
-	document.getElementById(`score--${activePlayer}`).textContent =
-		playerScores[`p${activePlayer}`];
+		document.getElementById(`score--${activePlayer}`).textContent =
+			playerScores[`p${activePlayer}`];
 
-	if (playerScores[`p${activePlayer}`] >= 100) {
-		console.log(`Player ${activePlayer} won!`);
+		diceImage.classList.add('hidden');
+
+		if (playerScores[`p${activePlayer}`] >= 100) {
+			playing = false;
+			document
+				.getElementById(`p${activePlayer}--crown`)
+				.classList.remove('hidden');
+			document
+				.querySelector(`.p${activePlayer}--active`)
+				.classList.add('hidden');
+		} else {
+			switchActivePlayer();
+		}
 	}
-
-	diceImage.classList.add('hidden');
-
-	switchActivePlayer();
 });

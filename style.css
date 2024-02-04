@@ -70,6 +70,10 @@ main {
 	position: relative;
 }
 
+.name {
+	position: relative;
+}
+
 .current {
 	background: var(--tertiary-bg-color);
 	padding: 1rem;
@@ -146,6 +150,14 @@ main {
 	animation: moveRightAndBack 1s ease-in-out infinite;
 }
 
+.crown {
+	font-size: 2.5rem;
+	position: absolute;
+	left: -35%;
+	top: -20%;
+	animation: growAndShrink 1s ease-in-out infinite;
+}
+
 @keyframes moveRightAndBack {
 	0% {
 		transform: translateX(0);
@@ -155,5 +167,17 @@ main {
 	}
 	100% {
 		transform: translateX(0);
+	}
+}
+
+@keyframes growAndShrink {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
 	}
 }
