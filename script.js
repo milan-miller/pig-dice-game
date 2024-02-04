@@ -67,7 +67,7 @@ rollDiceBtn.addEventListener('click', () => {
 });
 
 storeScoreBtn.addEventListener('click', () => {
-	if (playing) {
+	if (playing && currentScore !== 0) {
 		playerScores[`p${activePlayer}`] += currentScore;
 
 		document.getElementById(`score--${activePlayer}`).textContent =
