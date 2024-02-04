@@ -2,6 +2,8 @@
 
 // Selected Elements
 const diceImage = document.querySelector('.dice');
+const instructionsBtn = document.querySelector('.instructions-btn');
+const modalBtn = document.querySelector('.modal-btn');
 const newGameBtn = document.querySelector('.btn--new');
 const rollDiceBtn = document.querySelector('.btn--roll');
 const storeScoreBtn = document.querySelector('.btn--store');
@@ -105,4 +107,27 @@ newGameBtn.addEventListener('click', () => {
 	document
 		.querySelector(`.p${activePlayer}--active`)
 		.classList.remove('hidden');
+});
+
+const toggleModal = () => {
+	document.querySelector('.modal-background').classList.toggle('hidden');
+	document.getElementById('instructions-modal').classList.toggle('modal');
+	document.getElementById('instructions-modal').classList.toggle('hidden');
+};
+
+instructionsBtn.addEventListener('click', () => {
+	toggleModal();
+});
+
+modalBtn.addEventListener('click', () => {
+	toggleModal();
+});
+
+document.addEventListener('keydown', (event) => {
+	if (
+		event.key === 'Escape' &&
+		!document.getElementById('instructions-modal').classList.contains('hidden')
+	) {
+		toggleModal();
+	}
 });
