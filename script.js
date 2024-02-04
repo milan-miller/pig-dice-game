@@ -42,6 +42,12 @@ const switchActivePlayer = () => {
 	}
 };
 
+const toggleModal = () => {
+	document.querySelector('.modal-background').classList.toggle('hidden');
+	document.getElementById('instructions-modal').classList.toggle('modal');
+	document.getElementById('instructions-modal').classList.toggle('hidden');
+};
+
 // Event Listeners
 rollDiceBtn.addEventListener('click', () => {
 	if (playing) {
@@ -108,12 +114,6 @@ newGameBtn.addEventListener('click', () => {
 		.querySelector(`.p${activePlayer}--active`)
 		.classList.remove('hidden');
 });
-
-const toggleModal = () => {
-	document.querySelector('.modal-background').classList.toggle('hidden');
-	document.getElementById('instructions-modal').classList.toggle('modal');
-	document.getElementById('instructions-modal').classList.toggle('hidden');
-};
 
 instructionsBtn.addEventListener('click', () => {
 	toggleModal();
