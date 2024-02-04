@@ -1,16 +1,19 @@
 'use strict';
 
-// Selecting elements
+// Selected Elements
 const diceImage = document.querySelector('.dice');
 const newGameBtn = document.querySelector('.btn--new');
 const rollDiceBtn = document.querySelector('.btn--roll');
 const storeScoreBtn = document.querySelector('.btn--store');
+const p1TotalScore = document.getElementById('score--1');
+const p2TotalScore = document.getElementById('score--2');
 const currentScoreP1 = document.getElementById('current--1');
 const currentScoreP2 = document.getElementById('current--2');
 const p1Active = document.querySelector('.p1--active');
 const p2Active = document.querySelector('.p2--active');
 
-const playerScores = {
+// Initial States
+let playerScores = {
 	p1: 0,
 	p2: 0,
 };
@@ -18,7 +21,9 @@ const playerScores = {
 let currentScore = 0;
 let activePlayer = 1;
 let playing = true;
+diceImage.classList.add('hidden');
 
+// Functions
 const switchActivePlayer = () => {
 	currentScore = 0;
 	document.getElementById(`current--${activePlayer}`).textContent =
@@ -35,9 +40,7 @@ const switchActivePlayer = () => {
 	}
 };
 
-// Initial state
-diceImage.classList.add('hidden');
-
+// Event Listeners
 rollDiceBtn.addEventListener('click', () => {
 	if (playing) {
 		const randomNmb = Math.trunc(Math.random() * 6) + 1;
@@ -76,4 +79,30 @@ storeScoreBtn.addEventListener('click', () => {
 			switchActivePlayer();
 		}
 	}
+});
+
+newGameBtn.addEventListener('click', () => {
+	// Remove winners crown
+	document.getElementById(`p${activePlayer}--crown`).classList.add('hidden');
+
+	// Reset all initial values
+	playerScores = {
+		p1: 0,
+		p2: 0,
+	};
+
+	currentScore = 0;
+	playing = true;
+	diceImage.classList.add('hidden');
+	activePlayer = activePlayer === 1 ? 2 : 1;
+
+	p1TotalScore.textContent = 0;
+	p2TotalScore.textContent = 0;
+	currentScoreP1.textContent = 0;
+	currentScoreP2.textContent = 0;
+
+	// Let the losing player have the first turn
+	document
+		.querySelector(`.p${activePlayer}--active`)
+		.classList.remove('hidden');
 });
