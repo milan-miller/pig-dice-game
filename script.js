@@ -131,6 +131,10 @@ modalBtn.addEventListener('click', () => {
 	toggleModal();
 });
 
+document.querySelector('.modal-background').addEventListener('click', () => {
+	toggleModal();
+});
+
 document.addEventListener('keydown', (event) => {
 	if (
 		event.key === 'Escape' &&
