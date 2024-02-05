@@ -129,13 +129,14 @@ main {
 
 .instructions-btn {
 	position: absolute;
-	top: -5%;
-	right: 8%;
+	top: -7%;
+	right: 5%;
 	background: none;
 	border: none;
 	color: var(--secondary-font-color);
 	cursor: pointer;
 	font-size: 1.7rem;
+	font-weight: bold;
 }
 
 .hidden {
@@ -219,7 +220,7 @@ main {
 	}
 }
 
-@media screen and (max-width: 36.25em) {
+@media screen and (max-width: 59em) {
 	html {
 		font-size: 50%;
 	}
