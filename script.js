@@ -54,6 +54,10 @@ rollDiceBtn.addEventListener('click', () => {
 		const randomNmb = Math.trunc(Math.random() * 6) + 1;
 
 		diceImage.classList.remove('hidden');
+		diceImage.classList.add('shake');
+		diceImage.addEventListener('animationend', () => {
+			diceImage.classList.remove('shake');
+		});
 		diceImage.src = `assets/dice-${randomNmb}.png`;
 
 		if (randomNmb !== 1) {
